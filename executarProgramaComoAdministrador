@@ -1,0 +1,12 @@
+Pessoal boa tarde, passei a tarde de hoje TODA tentando encontrara a solução para um problema. Em um cliente várias aplicações precisavam do RunAS para executar em ambiente de domínio, porém o parâmetro /sevecred estava me quebrando as pernas, pois os usuários descobriram que se usasse: "C:\Windows\System32\runas.exe /savecred /user:dominio\aplicacoes aplicação" ele rodaria qualquer aplicação ou instalador como administrador. =(
+Então estava atrás de uma forma de não utilizar o savecred e de não deixar a senha disponível em texto plano para os usuários e após MUITOS testes consegui fazer isso. Pra isso dai tive que fazer uso de 2 programas diferentes:
+1 - runasspc.exe - http://robotronic.de/runasspc/runasspcen.zip
+2 - Bat2Exe - http://www.f2ko.de/downloads/Bat_To_Exe_Converter.zip
+Para resolver isso fiz o seguinte:
+1 - Copiei o runasspc para C:\Windows\System32\
+2 - Criei um arquivo .bat no bloco de notas com o seguinte conteúdo:
+runasspc.exe /domain:dominio /user:usuario /password:"Senha" /program:"Programa que deseja executar como administrador"
+3 - Usei o Bat2Exe para criar uma aplicação
+4 - Gere o executável e cole na área de trabalho. =)
+
+Fonte: https://itbr.org/phpbb3/viewtopic.php?f=34&t=2122
